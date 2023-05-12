@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.thumbnails{
+
+  display: grid;
+
+  grid-template-areas:
+
+  "img img img img"
+
+  "img img img img"
+
+  "img img img img"
+
+}
+
+.thumbnails img{
+
+  width:100px;
+
+  /* grid-area: img; */
+
+  margin: 5px;
+
+}
