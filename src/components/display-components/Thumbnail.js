@@ -1,6 +1,14 @@
+import { Card, CardActionArea, CardMedia } from "@mui/material";
+
+import { thumbnailCardStyle } from '../../styles/displayStyles';
+
 function Thumbnail({ path, setCurrentImg }) {
     return ( 
-        <img src={path} onClick={() => setCurrentImg(path)} alt={path}/>
+        <Card sx={thumbnailCardStyle}>
+            <CardActionArea onClick={() => setCurrentImg(path)}>
+                <CardMedia component="img" image={path}/>
+            </CardActionArea>
+        </Card>
     );
 }
 

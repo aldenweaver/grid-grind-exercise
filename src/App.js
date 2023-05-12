@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
-import './App.css';
+import { Card, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
+
 import Display from './components/display-components/Display';
 import Thumbnail from './components/display-components/Thumbnail';
-import HtmlGrid from './components/grid-components/HtmlGrid';
+
+import { containerStyle, projectStyle } from './styles/displayStyles';
+import './App.css';
 
 function App() {
   const imgs = [
@@ -40,16 +43,34 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <HtmlGrid/>
-      <Display currentImg={currentImg} nextImg={nextImg} prevImg={prevImg} randomImg={randomImg}/>
-      <div className="thumbnails">
-        {imgs.map((img, index) => { return (
-          <Thumbnail key={index} path={img} setCurrentImg={setCurrentImg}>
-          </Thumbnail>
-        );})}
-      </div>
-    </div>
+    <Container className="App" sx={containerStyle}>
+      <Typography variant="h4">
+        Grid Grind - Grid Exercises
+      </Typography>
+      <br/>
+
+      <Card sx={projectStyle}>
+        <CardHeader title="Image Gallery (Static Data)"/>
+
+        <CardContent sx={containerStyle}>
+          <Grid container spacing={2} sx={containerStyle}>
+            <Grid item xs={12}>
+              <Display currentImg={currentImg} nextImg={nextImg} prevImg={prevImg} randomImg={randomImg} />
+            </Grid>
+            <Grid item xs={12}>
+              <div className="thumbnails">
+                {imgs.map((img, index) => { return (
+                  <Thumbnail key={index} path={img} setCurrentImg={setCurrentImg}>
+                  </Thumbnail>
+                );})}
+              </div>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+      <br/>
+
+    </Container>
   );
 }
 

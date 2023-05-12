@@ -1,41 +1,31 @@
-import { Button } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia } from '@mui/material';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
+import { buttonStyle, currentCardStyle } from '../../styles/displayStyles';
+
 function Display({ currentImg, nextImg, prevImg, randomImg }) {
-    const style = {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100px",
-        margin: "5px",
-        height: "auto"
-    };
-
     return ( 
-         
-        <div className="display" style={style}>
+        <Card sx={currentCardStyle}>
+            <CardContent>
+                <CardMedia component="img" image={currentImg} />
+            </CardContent>
             
-            <img src={currentImg} alt="display"/>
-
-            <div className="buttons-nav">
-                
-                <Button variant="contained" onClick={prevImg}>
+            <CardActions>
+                <Button variant="contained" onClick={prevImg} sx={buttonStyle}>
                     <NavigateBeforeIcon/>
                 </Button>
 
-                <Button variant="contained" onClick={randomImg}>
+                <Button variant="contained" onClick={randomImg} sx={buttonStyle}>
                     <ShuffleIcon/>
                 </Button>
 
-                <Button variant="contained" onClick={nextImg}>
+                <Button variant="contained" onClick={nextImg} sx={buttonStyle}>
                     <NavigateNextIcon/>
                 </Button>
-               
-            </div>
-        </div>
+            </CardActions>
+        </Card> 
      );
 }
 
